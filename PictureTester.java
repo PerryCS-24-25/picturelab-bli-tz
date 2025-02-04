@@ -11,8 +11,9 @@ public class PictureTester {
      * Method to test the PictureExplorer
      */
     public static void testExplorer() {
-        Picture dogImage = new Picture("dogImage.jpg");
-        dogImage.explore();   
+        Picture dog = new Picture("dogImage.jfif");
+        Picture bigDog = dog.scale(0.75, 0.75);
+        bigDog.explore();   
     }
 
     /**
