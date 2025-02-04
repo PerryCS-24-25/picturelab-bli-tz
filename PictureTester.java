@@ -11,8 +11,8 @@ public class PictureTester {
      * Method to test the PictureExplorer
      */
     public static void testExplorer() {
-        Picture gorge = new Picture("gorge.jpg");
-        gorge.explore();   
+        Picture dogImage = new Picture("dogImage.jpg");
+        dogImage.explore();   
     }
 
     /**
