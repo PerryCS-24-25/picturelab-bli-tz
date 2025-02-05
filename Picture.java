@@ -131,14 +131,41 @@ public class Picture extends SimplePicture {
      */
     public void zeroRed() {
         //TODO: Write this method.
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels) {
+            for (Pixel pixelObj : rowArray) {
+                pixelObj.setRed(0);
+            }
+        }
     }
 
     /**
      * Removes all the green from this image.
      */
     public void zeroGreen() {
-        //TODO: Write this method.   
+        //TODO: Write this method.  
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels) {
+            for (Pixel pixelObj : rowArray) {
+                pixelObj.setGreen(0);
+            }
+        } 
     }
+
+public void keepOnlyBlue() {
+    zeroRed();
+    zeroGreen();
+}
+
+public void keepOnlyRed() {
+    zeroBlue();
+    zeroGreen();
+}
+
+public void keepOnlyGreen() {
+    zeroRed();
+    zeroBlue();
+}
 
     /**
      * Method that mirrors the picture around a vertical mirror in the center of
