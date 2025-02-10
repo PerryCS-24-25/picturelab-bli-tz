@@ -189,6 +189,62 @@ public void grayScale() {
         }
 }
 
+public void fixUnderwater() {
+    Pixel[][] pixels = this.getPixels2D();
+    int largestGreen = 0;
+    int smallestGreen = 255;
+    int largestBlue = 0;
+    int smallestBlue = 255;
+    int largestRed = 0;
+    int smallestRed = 255;
+        for (Pixel[] rowArray : pixels) {
+            for (Pixel pixelObj : rowArray) {
+                int currentGreen = pixelObj.getGreen();
+                if (currentGreen > largestGreen) {
+                    largestGreen = currentGreen;
+                }
+
+                if (currentGreen < smallestGreen) {
+                    smallestGreen = currentGreen;
+                }
+
+                int currentBlue = pixelObj.getBlue();
+                if (currentBlue > largestBlue) {
+                    largestBlue = currentBlue;
+                }
+
+                if (currentBlue < smallestBlue) {
+                    smallestBlue = currentBlue;
+                }
+
+                int currentRed = pixelObj.getRed();
+                if (currentRed > largestRed) {
+                    largestRed = currentRed;
+                }
+
+                if (currentRed < smallestRed) {
+                    smallestRed = currentRed;
+                }
+            }
+        }
+        int redRange = largestRed - smallestRed;
+        int greenRange = largestGreen - smallestGreen;
+        int blueRange = largestBlue - smallestBlue;
+        double scaleFactorRed = 255.0 / redRange;
+        double scaleFactorBlue = 255.0 / blueRange;
+        double scaleFactorGreen = 255.0 / greenRange;
+        for (Pixel[] rowArray : pixels) {
+            for (Pixel pixelObj : rowArray) {
+                int currentGreen = pixelObj.getGreen() - smallestGreen;
+                int currentBlue = pixelObj.getBlue() - smallestBlue;
+                int currentRed = pixelObj.getRed() - smallestRed;
+                pixelObj.setRed((int)(currentRed * scaleFactorRed));
+                pixelObj.setBlue((int)(currentBlue * scaleFactorBlue));
+                pixelObj.setGreen((int)(currentGreen * scaleFactorGreen));
+            }
+        }
+}
+
     /**
      * Method that mirrors the picture around a vertical mirror in the center of
      * the picture from left to right
