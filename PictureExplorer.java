@@ -105,6 +105,22 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
      */
     private JMenuBar menuBar;
     /**
+     * file menu
+     */
+    private JMenu fileMenu;
+    /**
+     * open file
+     */
+    private JMenuItem open;
+    /**
+     * save file
+     */
+    private JMenuItem save;
+    /**
+     * close file
+     */
+    private JMenuItem close;
+    /**
      * zoom menu
      */
     private JMenu zoomMenu;
@@ -224,6 +240,10 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
     private void setUpMenuBar() {
         //create menu
         menuBar = new JMenuBar();
+        fileMenu = new JMenu("File");
+        open = new JMenuItem("Open");
+        save = new JMenuItem("Save");
+        close = new JMenuItem("Close");
         zoomMenu = new JMenu("Zoom");
         twentyFive = new JMenuItem("25%");
         fifty = new JMenuItem("50%");
@@ -235,6 +255,9 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
         fiveHundred = new JMenuItem("500%");
 
         // add the action listeners
+        open.addActionListener(this);
+        save.addActionListener(this);
+        close.addActionListener(this);
         twentyFive.addActionListener(this);
         fifty.addActionListener(this);
         seventyFive.addActionListener(this);
@@ -244,6 +267,10 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
         fiveHundred.addActionListener(this);
 
         // add the menu items to the menus
+        fileMenu.add(open);
+        fileMenu.add(save);
+        fileMenu.add(close);
+        menuBar.add(fileMenu);
         zoomMenu.add(twentyFive);
         zoomMenu.add(fifty);
         zoomMenu.add(seventyFive);
@@ -344,6 +371,20 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
             this.zoom(5.0);
             enableZoomItems();
             fiveHundred.setEnabled(false);
+        }
+
+        if (a.getActionCommand().equals(open.getActionCommand())) { 
+            if (pictureFrame != null) {
+                FileChooser.showOpenDialog(pictureFrame).explore();
+            }
+        }
+
+        if (a.getActionCommand().equals(save.getActionCommand())) { 
+            FileChooser.showSaveDialog(pictureFrame, this.picture);
+        }
+
+        if (a.getActionCommand().equals(close.getActionCommand())) { 
+            pictureFrame.dispose();
         }
     }
 
