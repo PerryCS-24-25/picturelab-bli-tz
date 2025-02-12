@@ -297,6 +297,7 @@ public void fixUnderwater() {
             }
         }
     }
+
     public void mirrorHorizontal() {
         Pixel[][] pixels = this.getPixels2D();
         Pixel topPixel = null;
@@ -307,6 +308,20 @@ public void fixUnderwater() {
                 topPixel = pixels[row][col];
                 botPixel = pixels[height - 1 - row][col];
                 botPixel.setColor(topPixel.getColor());
+            }
+        }
+    }
+
+    public void mirrorHorizontalBotToTop() {
+        Pixel[][] pixels = this.getPixels2D();
+        Pixel topPixel = null;
+        Pixel botPixel = null;
+        int height = pixels.length;
+        for (int col = 0; col < pixels[0].length; col++) {
+            for (int row = 0; row < pixels.length; row++) {
+                topPixel = pixels[row][col];
+                botPixel = pixels[height - 1 - row][col];
+                topPixel.setColor(botPixel.getColor());
             }
         }
     }
