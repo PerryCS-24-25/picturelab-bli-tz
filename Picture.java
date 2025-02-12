@@ -180,11 +180,13 @@ public void negate() {
 
 public void grayScale() {
     Pixel[][] pixels = this.getPixels2D();
+    
         for (Pixel[] rowArray : pixels) {
             for (Pixel pixelObj : rowArray) {
-                pixelObj.setGreen((pixelObj.getGreen() + pixelObj.getRed() + pixelObj.getBlue()) / 3);
-                pixelObj.setRed((pixelObj.getGreen() + pixelObj.getRed() + pixelObj.getBlue()) / 3);
-                pixelObj.setBlue((pixelObj.getGreen() + pixelObj.getRed() + pixelObj.getBlue()) / 3);
+                double avg = pixelObj.getAverage();
+                pixelObj.setGreen((int)avg);
+                pixelObj.setRed((int)avg);
+                pixelObj.setBlue((int)avg);
             }
         }
 }
@@ -193,7 +195,8 @@ public void blackAndWhite() {
     Pixel[][] pixels = this.getPixels2D();
         for (Pixel[] rowArray : pixels) {
             for (Pixel pixelObj : rowArray) {
-                if ((pixelObj.getAverage() / 3) > 127) {
+                double avg = pixelObj.getAverage();
+                if (avg > 127) {
                     pixelObj.setGreen(255);
                     pixelObj.setRed(255);
                     pixelObj.setBlue(255);

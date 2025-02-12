@@ -421,13 +421,15 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
         }
 
         if (a.getActionCommand().equals(separateColors.getActionCommand())) {
-            Picture newPic = new Picture((SimplePicture)picture);
-            newPic.keepOnlyBlue();
-            newPic.explore();
-            newPic.keepOnlyRed();
-            newPic.explore();
-            newPic.keepOnlyGreen();
-            newPic.explore();
+            Picture newPic1 = new Picture((SimplePicture)picture);
+            Picture newPic2 = new Picture((SimplePicture)picture);
+            Picture newPic3 = new Picture((SimplePicture)picture);
+            newPic1.keepOnlyBlue();
+            newPic1.explore();
+            newPic2.keepOnlyRed();
+            newPic2.explore();
+            newPic3.keepOnlyGreen();
+            newPic3.explore();
         }
 
         if (a.getActionCommand().equals(invertColors.getActionCommand())) { 
