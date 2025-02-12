@@ -189,6 +189,24 @@ public void grayScale() {
         }
 }
 
+public void blackAndWhite() {
+    Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels) {
+            for (Pixel pixelObj : rowArray) {
+                if ((pixelObj.getAverage() / 3) > 127) {
+                    pixelObj.setGreen(255);
+                    pixelObj.setRed(255);
+                    pixelObj.setBlue(255);
+                } else {
+                    pixelObj.setGreen(0);
+                    pixelObj.setRed(0);
+                    pixelObj.setBlue(0);
+                }
+                
+            }
+        }
+}
+
 public void fixUnderwater() {
     Pixel[][] pixels = this.getPixels2D();
     int largestGreen = 0;
