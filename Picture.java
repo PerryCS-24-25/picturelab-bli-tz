@@ -384,6 +384,32 @@ public void fixUnderwater() {
                 rightPixel.setColor(leftPixel.getColor());
             }
         }
+        System.out.println(count);
+    }
+
+    public void mirrorArms() {
+        int mirrorPoint1 = 190;
+        Pixel topPixel1 = null;
+        Pixel botPixel1 = null;
+        Pixel[][] pixels = this.getPixels2D();
+
+        for (int row = 160; row < mirrorPoint1; row++) {
+            // loop from 13 to just before the mirror point
+            for (int col = 105; col < 170; col++) {
+                topPixel1 = pixels[row][col];
+                botPixel1 = pixels[mirrorPoint1 - row + mirrorPoint1][col];
+                botPixel1.setColor(topPixel1.getColor());
+            }
+        }
+
+        for (int row = 160; row < mirrorPoint1; row++) {
+            // loop from 13 to just before the mirror point
+            for (int col = 235; col < 295; col++) {
+                topPixel1 = pixels[row][col];
+                botPixel1 = pixels[mirrorPoint1 - row + mirrorPoint1][col];
+                botPixel1.setColor(topPixel1.getColor());
+            }
+        }
     }
 
     /**

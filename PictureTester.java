@@ -116,6 +116,13 @@ public class PictureTester {
         temple.explore();
     }
 
+    public static void testMirrorArms() {
+        Picture snowman = new Picture("snowman.jpg");
+        snowman.explore();
+        snowman.mirrorArms();
+        snowman.explore();
+    }
+
     /**
      * Method to test edgeDetection
      */
@@ -156,9 +163,8 @@ public class PictureTester {
         // testMirrorVerticalRightToLeft();
         // testMirrorHorizontal();
         // testMirrorHorizontalBotToTop();
-        testMirrorDiagonal();
         //testMirrorTemple();
-        //testMirrorArms();
+        testMirrorArms();
         //testMirrorGull();
         //testMirrorDiagonal();
         //testCollage();
