@@ -326,6 +326,31 @@ public void fixUnderwater() {
         }
     }
 
+    public void mirrorDiagonal() {
+        Pixel[][] pixels = this.getPixels2D();
+        Pixel botLeftPixel = null;
+        Pixel topRightPixel = null;
+        int length = 0;
+        // int height = pixels.length;
+        // int width = pixels[0].length;
+        for (int row = 0; row < pixels.length; row++) {
+            for (int col = 0; col < pixels[0].length; col++) {
+                if (pixels.length > pixels[0].length) {
+                    length = pixels[0].length;
+                } else {
+                    length = pixels.length;
+                }
+                if (row != col && row < length && col < length) {
+                    botLeftPixel = pixels[row][col];
+                    topRightPixel = pixels[col][row];
+                    topRightPixel.setColor(botLeftPixel.getColor());
+                }
+                    
+                
+            }
+        }
+    }
+
     /**
      *  Creates a vertical mirror image of the this picture.
      */
